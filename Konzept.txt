@@ -1,0 +1,5 @@
+Name:Zombie Slash
+Genre:Survival Game
+Spieltyp:Survival Shooter
+Beschreibung:Du spawnst in deinem Haus und musst alle Zombie Waves(1 Nacht die Wave) überleben
+Spielziel:Überlebe
