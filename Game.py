@@ -66,9 +66,9 @@ Jeff = Entity(model="assets/models/Jeff.obj",
 
 Pistol = Entity(model="assets/models/Pistol.obj",
                 texture="assets/textures/Pistol.png",
-                parent=camera.ui,
-                position=(.45, -.20, .45),
-                rotation_y=45)
+                parent=camera,
+                position=(.45, -.30, .60),
+                rotation_z=.270)
 
 #DO NOT RENAME
 def update():
@@ -89,6 +89,9 @@ def input(key):
         player.speed = 20
     else:
         player.speed = 10
+
+    if key == "left_mouse_down":
+        Bullet = Classes.Bullet()
 
     if key == "escape":
         sys.exit(0)

@@ -1,11 +1,11 @@
 from ursina import *
 from ursina.prefabs.health_bar import HealthBar
 
-class Zombie:
+class Bullet:
     def __init__(self):
-        self.model="cube",
-        self.color = color.blue,
-
+        self.model = "assets/models/Bullet.obj",
+        self.texture = "assets/textures/Bullet.png"
+        self.collider = "mesh"
 
 
         
