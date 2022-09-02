@@ -1,5 +1,6 @@
 #The Main Game File
 #import
+from turtle import position
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 from ursina.shaders import lit_with_shadows_shader
@@ -56,6 +57,18 @@ StupidHouse = Entity(model="assets/models/StupidHouse.obj",
                         scale=(30, 30, 30), 
                         collider="mesh", 
                         shader=lit_with_shadows_shader)
+
+Jeff = Entity(model="assets/models/Jeff.obj",
+                texture="assets/textures/Jeff.png",
+                position=(2, 0 , 2),
+                scale=(1.5, 1.5, 1.5),
+                collider="mesh")
+
+Pistol = Entity(model="assets/models/Pistol.obj",
+                texture="assets/textures/Pistol.png",
+                parent=camera.ui,
+                position=(.45, -.20, .45),
+                rotation_y=45)
 
 #DO NOT RENAME
 def update():

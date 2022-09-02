@@ -1,6 +1,6 @@
 #The Server
 #import
-###DE
+###DEPRECATED###
 import socket
 import threading
 import json
