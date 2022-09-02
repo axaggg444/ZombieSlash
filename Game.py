@@ -12,11 +12,6 @@ import socket
 #The Socket
 Client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-#Ask the user for the Server and Port
-#IP = input("Enter IP Address:")
-#PORT = input("Enter PORT:")
-#Username = input("Enter Username:")
-
 app = Ursina()
 
 #Window Config
@@ -44,11 +39,23 @@ pivot = Entity()
 AmbientLight(parent=pivot, y=10, z=3, shadows=True)
 
 #Map
-ground = Entity(model="plane", texture="grass", color=color.green, scale=(100, 1, 100), collider="mesh")
+ground = Entity(model="plane", 
+                texture="grass", 
+                color=color.green, 
+                scale=(100, 1, 100), 
+                collider="mesh")
 
-SaveBeam = Entity(model="cube", scale=(1, 100, 1), y=-50, color=color.yellow, collider="mesh", position=(40, 0, 40))
+Save = Entity(model="assets/models/Save.obj", 
+                    scale=(2, 2, 2), 
+                    texture="assets/textures/Save.png", 
+                    collider="mesh", 
+                    position=(40, 2, 40))
 
-StupidHouse = Entity(model="assets/models/StupidHouse.obj", texture="assets/textures/StupidHouse.png", scale=(30, 30, 30), collider="mesh", shader=lit_with_shadows_shader)
+StupidHouse = Entity(model="assets/models/StupidHouse.obj", 
+                        texture="assets/textures/StupidHouse.png", 
+                        scale=(30, 30, 30), 
+                        collider="mesh", 
+                        shader=lit_with_shadows_shader)
 
 #DO NOT RENAME
 def update():
@@ -56,12 +63,14 @@ def update():
         X, Y, Z, LV, HP, Money, Name = lib.Load("1")
         player.setPos(int(X), int(Y), int(Z))
 
-    SaveBeam.rotation_y += 1
+    Save.rotation_y += 1
+    Save.rotation_z += 1
 
-    if player.intersects(SaveBeam).hit:
-        SaveBeam.collider = "none"
+    if player.intersects(Save).hit:
+        Save.collider = "none"
         lib.Save("1", "0", "100", "0", str(round(player.x)), str(round(player.y)), str(round(player.z)))
 
+#All Input functions come here
 def input(key):
     if held_keys["shift"]:
         player.speed = 20
