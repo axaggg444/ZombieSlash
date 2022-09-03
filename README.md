@@ -23,6 +23,6 @@
  Left-Click for Shooting
 
 # Developers
- Developed by:
- axaggg444 - Main Programmer
+ Developed by:<br>
+ axaggg444 - Main Programmer<br>
  pat07hd - Ideas and Recources
