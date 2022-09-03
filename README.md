@@ -5,7 +5,7 @@
  With Git:
  Run `git clone https://github.com/axaggg444/ZombieSlash`
 
- Or go to https://github.com/axaggg444/ZombieSlash and download and unzi the File
+ Or go to https://github.com/axaggg444/ZombieSlash and download and unzip the File
 
 # Run
  Window:
@@ -18,8 +18,8 @@
  Not supported
 
 # Controls
- WASD for Moving
- Space for Jumping
+ WASD for Moving<br>
+ Space for Jumping<br>
  Left-Click for Shooting
 
 # Developers
