@@ -1,7 +1,7 @@
 from ursina import *
 from ursina.prefabs.health_bar import HealthBar
 
-class Bullet:
+class Bullet(Entity):
     def __init__(self):
         self.model = "assets/models/Bullet.obj",
         self.texture = "assets/textures/Bullet.png"
