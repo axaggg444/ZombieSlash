@@ -19,6 +19,7 @@ window.fullscreen = True
 window.exit_button.visible = False
 window.title = "Game"
 window.icon = "assets/textures/icon.ico"
+window.fps_counter.color = color.blue
 
 Entity.default_shader = lit_with_shadows_shader
 
@@ -82,7 +83,7 @@ Pistol = Entity(model="assets/models/Pistol.obj",
 #DO NOT RENAME
 def update():
     if player.y <= -200:
-        X, Y, Z, LV, HP, Money, Name = lib.Load("1")
+        X, Y, Z, LV, HP, Money, Name, Volume = lib.Load("1")
         player.setPos(int(X), int(Y), int(Z))
 
     Save.rotation_y += 1
@@ -90,7 +91,7 @@ def update():
 
     if player.intersects(Save).hit:
         Save.collider = "none"
-        lib.Save("1", "0", "100", "0", str(round(player.x)), str(round(player.y)), str(round(player.z)), Volume=Volume)
+        lib.Save("1", "0", "100", "0", str(round(player.x)), str(round(player.y)), str(round(player.z)), Volume="0.5")
 
 #All Input functions come here
 def input(key):
