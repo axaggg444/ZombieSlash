@@ -1,6 +1,5 @@
 #The Main Game File
 #import
-from turtle import position
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 from ursina.shaders import lit_with_shadows_shader
@@ -29,6 +28,7 @@ Sky(texture="sky_sunset")
 #The Player
 player = FirstPersonController(collider="box")
 player.setPos(0, 111, 0)
+
 player.cursor.color = color.black
 
 #Load the Game
@@ -38,6 +38,9 @@ player.setPos(int(X), int(Y), int(Z))
 #Lightning
 pivot = Entity()
 AmbientLight(parent=pivot, y=10, z=3, shadows=True)
+
+#Player Health bar
+Bar = HealthBar(color=color.lime, show_text=True, value=50)
 
 #Background Music
 Music = Audio(sound_file_name="assets/sound/Background.mp3", 
