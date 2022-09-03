@@ -80,6 +80,13 @@ Pistol = Entity(model="assets/models/Pistol.obj",
                 rotation_z=.270,
                 is_reloading=False)
 
+Rifle = Entity(model="assets/models/Rifle.obj",
+                texture="assets/textures/Rifle.png",
+                parent=scene,
+                position=(.45, -.30, .60),
+                rotation_z=.270,
+                is_reloading=False)
+
 #DO NOT RENAME
 def update():
     if player.y <= -200:
@@ -103,6 +110,14 @@ def input(key):
     if key == "left_mouse_down" and Pistol.is_reloading == False:
         Bullet = Classes.Bullet()
         Bullet.CreateEntity()
+
+    if key == "1":
+        Pistol.parent = camera
+        Rifle.parent = scene
+
+    if key == "2":
+        Pistol.parent = scene
+        Rifle.parent = camera
 
     if key == "escape":
         sys.exit(0)
