@@ -32,7 +32,7 @@ player.setPos(0, 111, 0)
 player.cursor.color = color.black
 
 #Load the Game
-X, Y, Z, LV, HP, Money, Name = lib.Load("1")
+X, Y, Z, LV, HP, Money, Name, Volume = lib.Load("1")
 player.setPos(int(X), int(Y), int(Z))
 
 #Lightning
@@ -40,8 +40,10 @@ pivot = Entity()
 AmbientLight(parent=pivot, y=10, z=3, shadows=True)
 
 #Background Music
-Music = Audio(sound_file_name="assets/sound/Background.mp3", autoplay=True, loop=True)
-
+Music = Audio(sound_file_name="assets/sound/Background.mp3", 
+                autoplay=True, 
+                loop=True, 
+                volume=0.5)
 #Map
 ground = Entity(model="plane", 
                 texture="grass", 
@@ -85,7 +87,7 @@ def update():
 
     if player.intersects(Save).hit:
         Save.collider = "none"
-        lib.Save("1", "0", "100", "0", str(round(player.x)), str(round(player.y)), str(round(player.z)))
+        lib.Save("1", "0", "100", "0", str(round(player.x)), str(round(player.y)), str(round(player.z)), Volume=Volume)
 
 #All Input functions come here
 def input(key):

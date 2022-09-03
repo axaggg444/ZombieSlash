@@ -29,17 +29,19 @@ def Create_save(Name):
     WriteFile(f"data/Save_{Savenumber}/LV.txt", "0")
     WriteFile(f"data/Save_{Savenumber}/HP.txt", "100")
     WriteFile(f"data/Save_{Savenumber}/Name.txt", Name)
-    WriteFile(f"data/Save_{Savenumber}/X.txt", "0")#
+    WriteFile(f"data/Save_{Savenumber}/X.txt", "0")
     WriteFile(f"data/Save_{Savenumber}/Y.txt", "0")
     WriteFile(f"data/Save_{Savenumber}/Z.txt", "0")
+    WriteFile(f"data/Save_{Savenumber}/Volume.txt", "0.5")
 
-def Save(Savenumber, Money, HP, LV, X, Y, Z):
+def Save(Savenumber, Money, HP, LV, X, Y, Z, Volume):
     WriteFile(f"data/Save_{Savenumber}/Money.txt", Money)
     WriteFile(f"data/Save_{Savenumber}/LV.txt", LV)
     WriteFile(f"data/Save_{Savenumber}/HP.txt", HP)
     WriteFile(f"data/Save_{Savenumber}/X.txt", X)
     WriteFile(f"data/Save_{Savenumber}/Y.txt", Y)
     WriteFile(f"data/Save_{Savenumber}/Z.txt", Z)
+    WriteFile(f"data/Save_{Savenumber}/Volume.txt", Volume)
 
 def Load(Savenumber):
     X = ReadFile(f"data/Save_{Savenumber}/X.txt")
@@ -49,4 +51,5 @@ def Load(Savenumber):
     HP = ReadFile(f"data/Save_{Savenumber}/HP.txt")
     Money = ReadFile(f"data/Save_{Savenumber}/Money.txt")
     Name = ReadFile(f"data/Save_{Savenumber}/Name.txt")
-    return X, Y, Z, LV, HP, Money, Name
+    Volume = ReadFile(f"data/Save_{Savenumber}/Volume.txt") 
+    return X, Y, Z, LV, HP, Money, Name, Volume
