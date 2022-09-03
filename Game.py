@@ -39,6 +39,9 @@ player.setPos(int(X), int(Y), int(Z))
 pivot = Entity()
 AmbientLight(parent=pivot, y=10, z=3, shadows=True)
 
+#Background Music
+Music = Audio(sound_file_name="assets/sound/Background.mp3", autoplay=True, loop=True)
+
 #Map
 ground = Entity(model="plane", 
                 texture="grass", 
@@ -68,7 +71,8 @@ Pistol = Entity(model="assets/models/Pistol.obj",
                 texture="assets/textures/Pistol.png",
                 parent=camera,
                 position=(.45, -.30, .60),
-                rotation_z=.270)
+                rotation_z=.270,
+                is_reloading=False)
 
 #DO NOT RENAME
 def update():
@@ -90,8 +94,9 @@ def input(key):
     else:
         player.speed = 10
 
-    if key == "left_mouse_down":
+    if key == "left_mouse_down" and Pistol.is_reloading == False:
         Bullet = Classes.Bullet()
+        Bullet.CreateEntity()
 
     if key == "escape":
         sys.exit(0)
