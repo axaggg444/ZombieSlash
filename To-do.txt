@@ -2,5 +2,4 @@
 -Map
 -Abilitys
 -Shop
--Waves
 -Finish Menu

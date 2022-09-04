@@ -8,6 +8,7 @@ import Classes
 import sys
 import lib
 
+#Application Creation
 app = Ursina()
 
 #Window Config
@@ -37,7 +38,10 @@ pivot = Entity()
 AmbientLight(parent=pivot, y=10, z=3, shadows=True)
 
 #Player Health bar
-Bar = HealthBar(color=color.lime, show_text=True, value=50)
+Bar = HealthBar(bar_color=color.gray, 
+                show_text=True, 
+                max_value=100, 
+                roundness=.07)
 
 #Coordinate Counter
 CordCounter = Text(text=f"X:{str(round(player.x))} Y:{str(round(player.y))} Z: {str(round(player.z))}", y=.1, x=-.1, color=color.dark_gray)
@@ -48,6 +52,7 @@ Music = Audio(sound_file_name="assets/sound/Background.mp3",
                 autoplay=True, 
                 loop=True, 
                 volume=0.5)
+
 #Map
 ground = Entity(model="plane", 
                 texture="grass", 
@@ -78,14 +83,16 @@ Pistol = Entity(model="assets/models/Pistol.obj",
                 parent=camera,
                 position=(.45, -.30, .60),
                 rotation_z=.270,
-                is_reloading=False)
+                is_reloading=False,
+                equipped=True)
 
 Rifle = Entity(model="assets/models/Rifle.obj",
                 texture="assets/textures/Rifle.png",
                 parent=scene,
                 position=(.45, -.30, .60),
                 rotation_z=.270,
-                is_reloading=False)
+                is_reloading=False,
+                equipped=False)
 
 #DO NOT RENAME
 def update():
@@ -102,6 +109,8 @@ def update():
 
 #All Input functions come here
 def input(key):
+    CordCounter.text = f"X:{str(round(player.x))} Y:{str(round(player.y))} Z: {str(round(player.z))}"
+
     if held_keys["shift"]:
         player.speed = 20
     else:
@@ -109,7 +118,6 @@ def input(key):
 
     if key == "left_mouse_down" and Pistol.is_reloading == False:
         Bullet = Classes.Bullet()
-        Bullet.CreateEntity()
 
     if held_keys["f3"]:
         window.fps_counter.visible = True

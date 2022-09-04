@@ -1,6 +1,6 @@
 import os
-import threading
 import json
+from ursina import *
 
 def ReadFile(file):
     f=open(file, "r")
