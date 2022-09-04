@@ -1,4 +1,3 @@
-from select import select
 from ursina import *
 from ursina.prefabs.health_bar import HealthBar
 

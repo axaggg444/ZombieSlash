@@ -7,10 +7,6 @@ from ursina.prefabs.health_bar import HealthBar
 import Classes
 import sys
 import lib
-import socket
-
-#The Socket
-Client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 app = Ursina()
 
@@ -19,7 +15,7 @@ window.fullscreen = True
 window.exit_button.visible = False
 window.title = "Game"
 window.icon = "assets/textures/icon.ico"
-window.fps_counter.color = color.blue
+window.fps_counter.visible = False
 
 Entity.default_shader = lit_with_shadows_shader
 
@@ -42,6 +38,10 @@ AmbientLight(parent=pivot, y=10, z=3, shadows=True)
 
 #Player Health bar
 Bar = HealthBar(color=color.lime, show_text=True, value=50)
+
+#Coordinate Counter
+CordCounter = Text(text=f"X:{str(round(player.x))} Y:{str(round(player.y))} Z: {str(round(player.z))}", y=.1, x=-.1, color=color.dark_gray)
+CordCounter.visible = False
 
 #Background Music
 Music = Audio(sound_file_name="assets/sound/Background.mp3", 
@@ -110,6 +110,13 @@ def input(key):
     if key == "left_mouse_down" and Pistol.is_reloading == False:
         Bullet = Classes.Bullet()
         Bullet.CreateEntity()
+
+    if held_keys["f3"]:
+        window.fps_counter.visible = True
+        CordCounter.visible = True
+    else:
+        window.fps_counter.visible = False
+        CordCounter.visible = False
 
     if key == "1":
         Pistol.parent = camera
