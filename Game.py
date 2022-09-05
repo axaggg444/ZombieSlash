@@ -41,7 +41,8 @@ AmbientLight(parent=pivot, y=10, z=3, shadows=True)
 Bar = HealthBar(bar_color=color.gray, 
                 show_text=True, 
                 max_value=100, 
-                roundness=.07)
+                roundness=.07,
+                x=-.1)
 
 #Coordinate Counter
 CordCounter = Text(text=f"X:{str(round(player.x))} Y:{str(round(player.y))} Z: {str(round(player.z))}", y=.1, x=-.1, color=color.dark_gray)
@@ -117,7 +118,7 @@ def input(key):
         player.speed = 10
 
     if key == "left_mouse_down" and Pistol.is_reloading == False:
-        Bullet = Classes.Bullet()
+        Bullet = Classes.Bullet(pos=(player.x, player.y, player.z))
 
     if held_keys["f3"]:
         window.fps_counter.visible = True
