@@ -4,6 +4,7 @@ from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 from ursina.shaders import lit_with_shadows_shader
 from ursina.prefabs.health_bar import HealthBar
+from ursina.mesh_importer import ursina_mesh_to_obj
 import Classes
 import sys
 import lib
@@ -17,6 +18,9 @@ window.exit_button.visible = False
 window.title = "Game"
 window.icon = "assets/textures/icon.ico"
 window.fps_counter.visible = False
+
+#Load the Models and Textures
+
 
 Entity.default_shader = lit_with_shadows_shader
 
@@ -38,11 +42,11 @@ pivot = Entity()
 AmbientLight(parent=pivot, y=10, z=3, shadows=True)
 
 #Player Health bar
-Bar = HealthBar(bar_color=color.gray, 
-                show_text=True, 
-                max_value=100, 
-                roundness=.07,
-                x=-.1)
+#Bar = HealthBar(bar_color=color.gray, 
+#                show_text=True, 
+#                max_value=100, 
+#                roundness=.07,
+#                x=-.1)
 
 #Coordinate Counter
 CordCounter = Text(text=f"X:{str(round(player.x))} Y:{str(round(player.y))} Z: {str(round(player.z))}", y=.1, x=-.1, color=color.dark_gray)

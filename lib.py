@@ -1,5 +1,5 @@
 import os
-import json
+import random
 from ursina import *
 
 def ReadFile(file):
@@ -12,13 +12,6 @@ def WriteFile(file, data):
     f=open(file, "w")
     f.write(data)
     f.close()
-
-def Send(Socket, X, Y, Z, Rotation):
-    Socket.send(json.dumps({"X": X, "Y": Y, "Z": Z, "Rotation": Rotation})).encode("utf-8")
-
-def Receive(Socket):
-    Json = Socket.recv(1024).encode("utf-8")
-    json.load(Json)
 
 def Create_save(Name):
     Saves = ReadFile("data/Saves.txt")
