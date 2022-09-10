@@ -44,5 +44,5 @@ def Load(Savenumber):
     HP = ReadFile(f"data/Save_{Savenumber}/HP.txt")
     Money = ReadFile(f"data/Save_{Savenumber}/Money.txt")
     Name = ReadFile(f"data/Save_{Savenumber}/Name.txt")
-    Volume = ReadFile(f"data/Save_{Savenumber}/Volume.txt") 
+    Volume = ReadFile(f"data/Save_{Savenumber}/Volume.txt")
     return X, Y, Z, LV, HP, Money, Name, Volume
