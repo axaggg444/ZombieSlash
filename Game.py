@@ -29,8 +29,7 @@ ground = Entity(model="cube",
                 texture="grass",
                 color=color.green,
                 scale=(100, 1, 100),
-                collider="mesh",
-                y=-1)
+                collider="mesh")
 
 #The Player
 player = FirstPersonController(collider="box")
