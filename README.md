@@ -9,21 +9,23 @@
 
 # Run
  Window:
- run Scripts/Start.bat
+ run Scripts/Start.bat<br>
 
  Linux:
- run Scripts/Start.sh
+ run Scripts/Start.sh<br>
 
  Mac:
- Not supported
+ Not supported<br>
 
 # Controls
  WASD for Moving<br>
  Space for Jumping<br>
- Left-Click for Shooting
+ Left-Click for Shooting<br>
 
 # Developers
  Developed by:<br>
  axaggg444 - Main Programmer<br>
  pat07hd - Ideas and Recources<br>
+
+# Music
  Music by <a href="https://pixabay.com/de/users/qubesounds-24397640/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=118722">QubeSounds</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=118722">Pixabay</a>
