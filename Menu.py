@@ -1,34 +1,28 @@
-#The Main Menu for the Game
-#import
+from ursina import *
 import subprocess
-import tkinter
-from tkinter import *
-import os
-import sys
 
-#Main window
-root = Tk()
+app = Ursina()
 
-#window configuration
-root.title("Zombie Slash")
-root.iconbitmap("assets/textures/icon.ico")
-root.config(bg="gray")
-root.geometry("256x256")
-root.resizable(width=False, height=False)
-
-#Functions
 def Quit():
     sys.exit(0)
 
 def Start():
     subprocess.call("python Game.py")
 
-#The Widgets of the GUI
-StartButton = Button(root, text="Start", background="gray", command=Start)
-StartButton.pack(pady=50)
+window.borderless = False
+window.title = "Menu"
+window.icon = "assets/textures/icon.ico"
+window.fps_counter.visible = False
+window.exit_button.visible = False
+img = Entity(model="cube", texture="assets/textures/icon.png", scale=(10, 10, 10), rotate_z=.45)
 
-QuitButton = Button(root, text="Quit", background="gray", command=Quit)
-QuitButton.pack(pady=50)
+#Start Button
+StartButton = Button(text="Start", scale=0.1, color=color.gray, y=.2)
+#Change
+StartButton.on_click = Start
 
-#mainloop
-root.mainloop()
+#Quit Button
+#Works fine
+QuitButton = Button(text="Quit", scale=0.1, color=color.gray, y=-.2)
+QuitButton.on_click = application.quit
+app.run()

@@ -25,7 +25,7 @@ Entity.default_shader = lit_with_shadows_shader
 Sky(texture="sky_sunset")
 
 #Ground
-ground = Entity(model="cube",
+ground = Entity(model="plane",
                 texture="grass",
                 color=color.green,
                 scale=(100, 1, 100),
@@ -158,7 +158,7 @@ def input(key):
         player.speed = 10
 
     if key == "left_mouse_down":
-        c = Entity(model="cube", position=Vec3(1, 2, 4))
+        c = Entity(model="cube", position=Vec3(1, 2, 4), texture="brick")
 
     if held_keys["f3"]:
         window.fps_counter.visible = True
