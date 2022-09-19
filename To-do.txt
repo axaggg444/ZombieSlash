@@ -1,4 +1,4 @@
 -Weapons
 -Enemies
--Map
+-Map✔
 -Finish Menu✔
