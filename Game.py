@@ -19,6 +19,10 @@ window.title = "Game"
 window.icon = "assets/textures/icon.ico"
 window.fps_counter.visible = False
 
+application.development_mode = False
+
+lit_with_shadows_shader.compile()
+
 Entity.default_shader = lit_with_shadows_shader
 
 #The Sky
@@ -30,9 +34,12 @@ Map = Entity(model="assets/models/Map.obj",
                 collider="mesh",
                 scale=(50, 50, 50))
 
-def GoTo1():
-    player.y + 2
-    player.animate_position(duration=2, value=(-20, 20, -60))
+def TeleportTo1():
+    player.setPos((-20, 20, -60))
+
+def TeleportTo2():
+    player.setPos((-20, 30, 100))
+
 
 #The Player
 player = FirstPersonController(collider="box")
@@ -63,7 +70,7 @@ Save = Entity(model="assets/models/Save.obj",
                     scale=(2, 2, 2),
                     texture="assets/textures/Save.png",
                     collider="mesh",
-                    position=(0, 4, 0))
+                    position=(10, 4, 5))
 
 Pistol = Entity(model="assets/models/Pistol.obj",
                 texture="assets/textures/Pistol.png",
@@ -93,16 +100,29 @@ Pad1 = Entity(model="cube",
                 scale=(5, 1, 5),
                 position=(-13, 3, -21))
 
+Pad2 = Entity(model="cube",
+                color=color.red,
+                collider="mesh",
+                scale=(5, 1, 5),
+                position=(-13, 3, 21))
+
 #All the 10 Zombies
-Zombie2 = duplicate(Zombie)
-Zombie3 = duplicate(Zombie)
-Zombie4 = duplicate(Zombie)
-Zombie5 = duplicate(Zombie)
-Zombie6 = duplicate(Zombie)
-Zombie7 = duplicate(Zombie)
-Zombie8 = duplicate(Zombie)
-Zombie9 = duplicate(Zombie)
-Zombie10 = duplicate(Zombie)
+#Zombie2 = duplicate(Zombie)
+#Zombie3 = duplicate(Zombie)
+#Zombie4 = duplicate(Zombie)
+#Zombie5 = duplicate(Zombie)
+#Zombie6 = duplicate(Zombie)
+#Zombie7 = duplicate(Zombie)
+#Zombie8 = duplicate(Zombie)
+#Zombie9 = duplicate(Zombie)
+#Zombie10 = duplicate(Zombie)
+
+#Zombies = [Zombie, Zombie2, Zombie3, Zombie4, Zombie5, Zombie6, Zombie7, Zombie8, Zombie9, Zombie10]
+
+#Positioning the Zombies
+#for i in Zombies:
+#    X, Y, Z = lib.GenerateEnemyPosition()
+#    i.setPos((X, Y, Z))
 
 #DO NOT RENAME
 def update():
@@ -110,27 +130,9 @@ def update():
         X, Y, Z, LV, HP, Money, Name, Volume = lib.Load("1")
         player.setPos(int(X), int(Y), int(Z))
 
-    Zombie.look_at(player)
-    Zombie2.look_at(player)
-    Zombie3.look_at(player)
-    Zombie4.look_at(player)
-    Zombie5.look_at(player)
-    Zombie6.look_at(player)
-    Zombie7.look_at(player)
-    Zombie8.look_at(player)
-    Zombie9.look_at(player)
-    Zombie10.look_at(player)
-
-#    Zombie.forward(player)
-#    Zombie2.forward(player)
-#    Zombie3.forward(player)
-#    Zombie4.forward(player)
-#    Zombie5.forward(player)
-#    Zombie6.forward(player)
-#    Zombie7.forward(player)
-#    Zombie8.forward(player)
-#    Zombie9.forward(player)
-#    Zombie10.forward(player)
+#    for i in Zombies:
+#        i.look_at(player)
+#        i.position += i.forward
 
     Save.rotation_y += 1
     Save.rotation_z += 1
@@ -140,11 +142,17 @@ def update():
         lib.Save("1", "0", "100", "0", str(round(player.x)), str(round(player.y)), str(round(player.z)), Volume="0.5")
 
     if player.intersects(Pad1).hit:
-        GoTo1()
+        TeleportTo1()
+
+    if player.intersects(Pad2).hit:
+        TeleportTo2()
 
 #All Input functions come here
 def input(key):
     CordCounter.text = f"X:{str(round(player.x))} Y:{str(round(player.y))} Z: {str(round(player.z))}"
+
+    if key == "space" and player.grounded == False:
+        player.jump()
 
     if held_keys["shift"]:
         player.speed = 20
@@ -152,10 +160,11 @@ def input(key):
         player.speed = 10
 
     if key == "left_mouse_down":
-        pass
+        if player.look_at(Entity):
+            print("Hi")
 
     if key == "r":
-        player.set_position((0, 0, 0))
+        player.set_position((0, 3, 0))
 
     if held_keys["f3"]:
         window.fps_counter.visible = True
