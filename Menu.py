@@ -12,6 +12,7 @@ def Quit():
 
 def Start():
     subprocess.call("python Game.py")
+    sys.exit(0)
 
 #window configuration
 window.borderless = False
