@@ -5,7 +5,7 @@ from ursina.prefabs.first_person_controller import FirstPersonController
 from ursina.shaders import lit_with_shadows_shader
 from ursina.prefabs.health_bar import HealthBar
 from ursina.mesh_importer import obj_to_ursinamesh
-import Classes
+from Classes import *
 import sys
 import lib
 
@@ -46,6 +46,8 @@ player = FirstPersonController(collider="box")
 player.setPos(0, 0, 0)
 
 player.cursor.color = color.black
+
+Bullet1 = Bullet()
 
 #Load the Game
 X, Y, Z, LV, HP, Money, Name, Volume = lib.Load("1")
@@ -105,24 +107,6 @@ Pad2 = Entity(model="cube",
                 collider="mesh",
                 scale=(5, 1, 5),
                 position=(-13, 3, 21))
-
-#All the 10 Zombies
-#Zombie2 = duplicate(Zombie)
-#Zombie3 = duplicate(Zombie)
-#Zombie4 = duplicate(Zombie)
-#Zombie5 = duplicate(Zombie)
-#Zombie6 = duplicate(Zombie)
-#Zombie7 = duplicate(Zombie)
-#Zombie8 = duplicate(Zombie)
-#Zombie9 = duplicate(Zombie)
-#Zombie10 = duplicate(Zombie)
-
-#Zombies = [Zombie, Zombie2, Zombie3, Zombie4, Zombie5, Zombie6, Zombie7, Zombie8, Zombie9, Zombie10]
-
-#Positioning the Zombies
-#for i in Zombies:
-#    X, Y, Z = lib.GenerateEnemyPosition()
-#    i.setPos((X, Y, Z))
 
 #DO NOT RENAME
 def update():

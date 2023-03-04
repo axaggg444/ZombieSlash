@@ -1,5 +1,0 @@
-Name:Zombie Slash
-Genre:Survival game
-Gametype:Survival shooter
-description:You spawn in a house and have to defend yourself against zombies
-goal:Survive
