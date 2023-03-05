@@ -1,6 +1,23 @@
 # ZombieSlash
  A Simple Zombie Shooter(School Project)
 
+# Announcement
+ Hello my dear ZombieSlash Players,
+ I plan to work from now again on the Game.
+ In the next weeks I want to rewrite the Project in many Parts.
+ But I plan on adding the following features:
+  - A working Weapon System
+  - Enemies(Finally)
+  - A good Map
+  - Multiplayer(Maybe)
+  - A complete Overhaul of the Player System
+
+ But no gurantees yet!
+
+ That would it be with this Announcement, thanks for reading!
+
+ Discord:Coming soon
+
 # Install
  With Git:
  Run `git clone https://github.com/axaggg444/ZombieSlash`

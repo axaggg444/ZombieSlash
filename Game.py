@@ -3,8 +3,7 @@
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 from ursina.shaders import lit_with_shadows_shader
-from ursina.prefabs.health_bar import HealthBar
-from ursina.mesh_importer import obj_to_ursinamesh
+from ursinanetworking import *
 from Classes import *
 import sys
 import lib
@@ -19,11 +18,9 @@ window.title = "Game"
 window.icon = "assets/textures/icon.ico"
 window.fps_counter.visible = False
 
-application.development_mode = False
+application.development_mode = True
 
-lit_with_shadows_shader.compile()
-
-Entity.default_shader = lit_with_shadows_shader
+camera.default_shader = lit_with_shadows_shader
 
 #The Sky
 Sky(texture="sky_sunset")
@@ -113,10 +110,6 @@ def update():
     if player.y <= -200:
         X, Y, Z, LV, HP, Money, Name, Volume = lib.Load("1")
         player.setPos(int(X), int(Y), int(Z))
-
-#    for i in Zombies:
-#        i.look_at(player)
-#        i.position += i.forward
 
     Save.rotation_y += 1
     Save.rotation_z += 1
