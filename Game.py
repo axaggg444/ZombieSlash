@@ -31,13 +31,6 @@ Map = Entity(model="assets/models/Map.obj",
                 collider="mesh",
                 scale=(50, 50, 50))
 
-def TeleportTo1():
-    player.setPos((-20, 20, -60))
-
-def TeleportTo2():
-    player.setPos((-20, 30, 100))
-
-
 #The Player
 player = FirstPersonController(collider="box")
 player.setPos(0, 0, 0)
@@ -71,14 +64,14 @@ Save = Entity(model="assets/models/Save.obj",
                     collider="mesh",
                     position=(10, 4, 5))
 
-Pistol = Entity(model="assets/models/Pistol.obj",
-                texture="assets/textures/Pistol.png",
-                parent=camera,
-                position=(.45, -.30, .60),
-                rotation_z=.270,
-                is_reloading=False,
-                equipped=True)
-
+#Pistol = Entity(model="assets/models/Pistol.obj",
+#                texture="assets/textures/Pistol.png",
+#                parent=camera,
+#                position=(.45, -.30, .60),
+#                rotation_z=.270,
+#                is_reloading=False,
+#                equipped=True)
+Pistol = Weapon("assets/models/Pistol.obj", "assets/textures/Pistol.png", (.45, -.30, .60), False, True, .270, 0, 0)
 Rifle = Entity(model="assets/models/Rifle.obj",
                 texture="assets/textures/Rifle.png",
                 parent=scene,
@@ -91,19 +84,6 @@ Zombie = Entity(model="assets/models/Zombie.obj",
                 texture="assets/textures/Zombie.png",
                 collider="mesh",
                 scale=10)
-
-#The Jump pads
-Pad1 = Entity(model="cube",
-                color=color.red,
-                collider="mesh",
-                scale=(5, 1, 5),
-                position=(-13, 3, -21))
-
-Pad2 = Entity(model="cube",
-                color=color.red,
-                collider="mesh",
-                scale=(5, 1, 5),
-                position=(-13, 3, 21))
 
 #DO NOT RENAME
 def update():
@@ -118,12 +98,6 @@ def update():
         Save.collider = "none"
         lib.Save("1", "0", "100", "0", str(round(player.x)), str(round(player.y)), str(round(player.z)), Volume="0.5")
 
-    if player.intersects(Pad1).hit:
-        TeleportTo1()
-
-    if player.intersects(Pad2).hit:
-        TeleportTo2()
-
 #All Input functions come here
 def input(key):
     CordCounter.text = f"X:{str(round(player.x))} Y:{str(round(player.y))} Z: {str(round(player.z))}"
@@ -136,10 +110,6 @@ def input(key):
     else:
         player.speed = 10
 
-    if key == "left_mouse_down":
-        if player.look_at(Entity):
-            print("Hi")
-
     if key == "r":
         player.set_position((0, 3, 0))
 
@@ -149,6 +119,9 @@ def input(key):
     else:
         window.fps_counter.visible = False
         CordCounter.visible = False
+
+    if key == "left mouse down":
+        Pistol.Shoot(player.x, player.y, player.z, (.45, -.30, .60))
 
     if key == "1":
         Pistol.parent = camera

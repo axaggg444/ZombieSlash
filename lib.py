@@ -1,12 +1,6 @@
 import os
 import random
 
-def GenerateEnemyPosition():
-    X = random.randint(-100, 100)
-    Y = random.randint(50, 100)
-    Z = random.randint(-100, 100)
-    return X, Y, Z
-
 def ReadFile(file):
     f=open(file, "r")
     data=f.read()
