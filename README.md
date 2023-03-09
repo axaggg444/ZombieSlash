@@ -1,5 +1,5 @@
 # ZombieSlash
- A Simple Zombie Shooter(School Project)
+ A Simple Zombie Shooter
 
 # Announcement
  Hello my dear ZombieSlash Players,
