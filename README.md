@@ -22,7 +22,7 @@
  With Git:
  Run `git clone https://github.com/axaggg444/ZombieSlash`
 
- Or go to https://github.com/axaggg444/ZombieSlash and download and unzip the File
+ Or go to https://github.com/axaggg444/ZombieSlash to download and unzip the File.
 
 # Run
  Window:
